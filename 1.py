@@ -16,5 +16,6 @@ jd = json.loads(res.text) #解析JSON轉成dict
 df = pd.DataFrame(jd['items']['data']) #取出新聞資料
 df = df[['newsId', 'title', 'summary']]#取出特定欄位
 df['link'] = df['newsId'].apply(lambda  x: 'https://m.cnyes.com/news/id/' + str(x))#建立連結
-df.to_csv('news.csv', encoding = 'utf-8-sig')
+df.to_csv('news.csv', encoding = 'utf-8-sig',index =False)
+df.to_excel('news.xlsx', index=False)
 print(df)
